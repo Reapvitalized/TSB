@@ -1,1 +1,6 @@
-# The Strongest Battlegrounds, A roblox [game](https://www.roblox.com/games/10449761463/ShortCut)
+# The Strongest Battlegrounds, A roblox [game](https://www.roblox.com/games/10449761463/ShortCut) NOT made by a solo dev.
+
+These are Scripts/Exploits you can use to either gain and unfair advantage or just a cool looking moveset lmao
+
+Obviously not supported by the owner or moderators/staff/admins of tsb
+Dont let that stop you from exploing
