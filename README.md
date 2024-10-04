@@ -7,7 +7,9 @@ Dont let that stop you from exploiting
 
 Created by Reap4985 Or Reap 
 
-its reap not reaper
+"Reaper" is named Apophenia
+
+im reap not reaper
 
 Check out the [Discord Server!](https://discord.gg/sd8QGejrh8)
 
