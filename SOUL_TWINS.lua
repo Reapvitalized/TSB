@@ -1,13 +1,4 @@
 
-local IsUser = false
---set to false if your saitama
-
---MUST BE THE ACTUAL USERNAME NOT DISPLAY
-getgenv().username = 'ins'
---the guy who is garou^^
-getgenv().username2 = 'ipe'
---the guy who is saitama^^^
-
 
 function MainEnv()
 --hi if your reading that means you have the open source
