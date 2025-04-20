@@ -1,19 +1,4 @@
-local ye = loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/Version-Testing/refs/heads/main/V"))()
-getgenv().sex = 'V2.4'
-if ye == 'DOWN' then 
-game:GetService("StarterGui"):SetCore("SendNotification", 
-{ Title = "STAR GLITCHER"; 
-Text = "SCRIPT IS DOWN, MOST LIKELY DUE TO LEAKERS";
-Duration = 255; Button1 = "damn"; })
-end
-if ye ~= getgenv().sex then 
-game:GetService("StarterGui"):SetCore("SendNotification", 
-{ Title = "STAR GLITCHER"; 
-Text = "OUTDATED, GET THE NEW ONE!!!!!";
-Duration = 255; Button1 = "damn"; })
-return
-else
-end
+
 game.Players.LocalPlayer:SetAttribute('S_UltMusic', false)
 local menutxt = 'V - FUCK IT WE BALL!!!!!'
 getgenv().FailSafe = true
@@ -142,14 +127,6 @@ s.Volume = 0
 s.Looped = true
 s.Name = i
 end
-
-repeat task.wait() until 
-IsWhitelisted == true and
-IsPregnant == true and
-IsGay == true and
-IsStupid == true and
-IsMarkiplier == true and
-IsGoldenHead == true
 
 getgenv().ModeUI = false
 getgenv().SpawnEffects = false
