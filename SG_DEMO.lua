@@ -1,6 +1,6 @@
 
 game.Players.LocalPlayer:SetAttribute('S_UltMusic', false)
-local menutxt = 'V - FUCK IT WE BALL!!!!!'
+local menutxt = 'V - FUCK IT, WE BALL!'
 getgenv().FailSafe = true
 getgenv().DownloadAudio = true
 
@@ -58,6 +58,7 @@ task.wait(dly)
 ScreenGui:Destroy()
 end)
 end
+
 --AUDIO FUNCTION
 function GetAudio(audioname)
 local result
@@ -508,8 +509,13 @@ end)
 repeat task.wait() until donesetting == true 
 game:GetService("GuiService"):ClearError()
 pcall(function() game.CoreGui.SGRevitalizedUI:Destroy() end)
-local ddf = game:GetService("Players").LocalPlayer.PlayerGui.TopbarPlus.TopbarContainer:GetChildren()[7].DropdownContainer.DropdownFrame
-
+local ddf = nil
+for i, part in ipairs(game.Players.LocalPlayer.PlayerGui.TopbarPlus.TopbarContainer:GetChildren()) do
+if part.Name == 'UnnamedIcon' then
+for i, sex in ipairs(part.DropdownContainer.DropdownFrame:GetChildren()) do
+if sex.Name == 'Bald' then
+ddf = sex.Parent
+end end end end
 function RefreshTopBarUI()
 local potato = 0 
 if getgenv().potato_device == true then
@@ -3084,13 +3090,12 @@ local k = char.Humanoid:LoadAnimation(Anim)
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://137841251329955"
 local floatplay = char.Humanoid:LoadAnimation(Anim)
-local UltraSonicLoop = false
-pcall(function()
- getgenv().Idle:Disconnect() end)
- task.wait(.1)
+local ViolenceLoop = false
+
+ if getgenv().ModeIdleAuras == true then 
 getgenv().Idle = char.Humanoid.AnimationPlayed:Connect(function(v)
 if v.Animation.AnimationId == "rbxassetid://14516273501" then
-UltraSonicLoop = true
+ViolenceLoop = true
 k:Play(.3)
 k.Priority = Enum.AnimationPriority.Idle
 k:AdjustSpeed(0)
@@ -3099,15 +3104,120 @@ floatplay.Priority = Enum.AnimationPriority.Idle
 floatplay:AdjustSpeed(.5)
 spawn(function()
 for i = 1,999999 do 
-if UltraSonicLoop == false then break end
+if ViolenceLoop == false then break end
+k.TimePosition = .7+math.sin(i/45)/45
+floatplay:AdjustSpeed(math.tan(i/15))
+local p = Instance.new('Part')
+p.Parent = getgenv().Enviroment
+p.Material = Enum.Material.Neon 
+p.Size=Vector3.new(1,1,1)
+p.Anchored=true p.CanCollide=false
+
+local msh2 = Instance.new("SpecialMesh",p)
+msh2.MeshType = "Sphere"
+p.Color=Color3.new(1,0,.1)
+msh2.Scale = Vector3.new(1,1,1)
+p.CFrame = hrp.CFrame*CFrame.new(
+	math.random(-55,55),math.random(-25,-15),
+	math.random(-55,55))
+local bld = Instance.new("ParticleEmitter",p)
+bld.LightEmission = 1
+bld.Brightness = 1
+
+bld.Texture = "rbxassetid://6673021984"
+bld.Color = ColorSequence.new(Color3.new(1,1,1))
+bld.Rate = 0
+bld.Orientation = 'VelocityParallel'
+bld.Lifetime = NumberRange.new(1)
+spawn(function()
+for j = 1,77 do 
+msh2.Scale = Vector3.new(
+1-j/5+getgenv().music.PlaybackLoudness/55,
+j/2+getgenv().music.PlaybackLoudness/55,
+1-j/5+getgenv().music.PlaybackLoudness/55
+)
+
+
+
+
+task.wait(.03)
+ end end)
+bld.Squash=NumberSequence.new({
+NumberSequenceKeypoint.new(0,0),
+NumberSequenceKeypoint.new(1,-5)})
+bld.Transparency = NumberSequence.new({
+NumberSequenceKeypoint.new(0,1),
+NumberSequenceKeypoint.new(.1,0),
+NumberSequenceKeypoint.new(1,1)})
+bld.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, 
+Color3.fromRGB(255, 0, 0)), ColorSequenceKeypoint.new(1.00,
+Color3.fromRGB(252, 0, 0))}
+bld.Speed = NumberRange.new(.1)
+bld.VelocitySpread = 0
+bld.ZOffset = -2
+bld.Rotation = NumberRange.new(0)
+bld:Emit(1)
+bld.LockedToPart = true
+task.delay(1.5,function()
+bld.Rate = 0 end)
+game:GetService("Debris"):AddItem(p, 2.5)
+game.TweenService:Create(msh2,TweenInfo.new(1),{
+Scale=Vector3.new(0,15,0)
+}):Play()
+game.TweenService:Create(p,TweenInfo.new(2.5),{
+Transparency = 1,CFrame = p.CFrame*CFrame.new(0,math.random(15,99),0)
+}):Play()
+
+
+local p = Instance.new('Part')
+p.Parent = getgenv().Enviroment
+p.Material = Enum.Material.Neon 
+p.Size=Vector3.new(1,1,1)
+p.Anchored=true p.CanCollide=false
+
+local msh2 = Instance.new("SpecialMesh",p)
+msh2.MeshType = "Sphere"
+p.Color=Color3.new(1,0,.1)
+msh2.Scale = Vector3.new(1,1,1)
+p.CFrame = hrp.CFrame*CFrame.new(0,-3,0)*
+CFrame.Angles(0,i,0)
+game:GetService("Debris"):AddItem(p, .3)
+spawn(function()
+for e = 1,35 do 
+msh2.Scale=Vector3.new(15+getgenv().music.PlaybackLoudness/15,.6,.6)
+p.Transparency = (0+e/35)+-getgenv().music.PlaybackLoudness/155
+task.wait(.01) end end)
+game.TweenService:Create(p,TweenInfo.new(.5),{
+Transparency = 1
+}):Play()
+task.wait(.02) end end)
+v.Stopped:wait()
+k:Stop(.2) floatplay:Stop()
+
+ViolenceLoop = false
+end end)
+else 
+getgenv().Idle = char.Humanoid.AnimationPlayed:Connect(function(v)
+if v.Animation.AnimationId == "rbxassetid://14516273501" then
+ViolenceLoop = true
+k:Play(.3)
+k.Priority = Enum.AnimationPriority.Idle
+k:AdjustSpeed(0)
+floatplay:Play()
+floatplay.Priority = Enum.AnimationPriority.Idle
+floatplay:AdjustSpeed(.5)
+spawn(function()
+for i = 1,999999 do 
+if ViolenceLoop == false then break end
 k.TimePosition = .7+math.sin(i/45)/45
 floatplay:AdjustSpeed(math.tan(i/15))
 task.wait(.02) end end)
 v.Stopped:wait()
 k:Stop(.2) floatplay:Stop()
 
-UltraSonicLoop = false
+ViolenceLoop = false
 end end)
+end
 _G.SetMusic(24)
 _G.QuickSet(255,0,0,55,0,0)
 
@@ -3924,6 +4034,7 @@ s.Volume = 9.5 s:Play()
 task.spawn(function() task.wait(9) s:Destroy() end)
 end
 end)
+task.wait(8)
 --[[
 settings and stuff
 local loopamm = 5 -- loop ammount for the line impact
@@ -3954,9 +4065,9 @@ local conloop = 3
 local ttween = .1
 ]]
 
-local loopamm = 255
+local loopamm = 255/2
 local hldly = 12.5
-local conloop = 255/6
+local conloop = 255/8
 local ttween = .1
 
 
@@ -10556,8 +10667,7 @@ bld.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00,
 BrickColor.random().Color), ColorSequenceKeypoint.new(1.00,
 BrickColor.random().Color)}
 bld.Speed = NumberRange.new(55-i*2)
-task.wait(.01) end end)--FUCK IT WE BALL, MADE BY R1EAP WITHOUT THE 1 NOT THIS DUMBASS NAMED GOLDEN!
---ldisco.rd.gg./sou//lshatte/r/s
+task.wait(.01) end end)
 bld.VelocitySpread = 50000
 bld.Rotation = NumberRange.new(-500,500)
 bld.RotSpeed = NumberRange.new(-500,500)
@@ -10687,7 +10797,6 @@ local Blur = nil
 task.spawn(function()
 Blur = Instance.new('BlurEffect',game.Lighting)
 for i = 1,1512515 do
--- THANK YOU Y_X!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 if doColors == false then break end
 Blur.Size = getgenv().music.PlaybackLoudness/88
 game.Lighting.FogColor = CurrentColor
@@ -10798,7 +10907,7 @@ task.wait(9)
 repeat task.wait() until bp:FindFirstChild('Flowing Water')
 doColors = false 
 _G.SetMusic(4,1,34)
---the pure fuck it we ball energy i will radiate after this
+
 game.Lighting.ExposureCompensation = 0
 workspace.CurrentCamera.FieldOfView = 70
 local uilol = lp.PlayerGui.Hotbar.Backpack.Hotbar["1"]
@@ -16448,7 +16557,7 @@ bld.Brightness = 1
 bld.Orientation = 'VelocityPerpendicular'
 bld.Texture = "rbxassetid://6673021984"
 bld.Rate = 155
-bld.Name = 'GlowS,GOLDEN.... KEEPS STEALING MY CREDITS! discord.gg/soulshatters'
+bld.Name = 'GlowS'
 bld.Lifetime = NumberRange.new(.5)
 bld.Size = NumberSequence.new({
 NumberSequenceKeypoint.new(0,math.random(3,5)*3),
@@ -16508,7 +16617,7 @@ ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Name = 'BorderEffect'
 
-MainFrame.Name = "GO>>>LDEN IS A PIECE OF SHIT!!!!"
+MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
 MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderColor3 = Color3.fromRGB(255, 255, 0)
@@ -20166,7 +20275,61 @@ if db == true then return end
 spawn(function()
 db = true task.wait(1.2) db = false end)
 MainFrame.Text = [[
-FUCK IT WE BALL! GET RID OF GOLDEN
+
+> > You are not allowed to:
+> > Distribute the script
+> > Reverse Engineer, Modify the code (Settings unincluded)
+
+> > You are allowed to:
+> > Modify the settings given from each script
+
+
+
+**SOFTWARE LICENSE AGREEMENT**
+
+This Software License Agreement ("Agreement") is entered into on 12/16/24 ("Effective Date")
+
+**1. DEFINITIONS**
+
+* "script" means the closed source and described and meant to be as "Early Access" paid scripts distributed by either the current original owner(s) of the several GitHub accounts listed here.
+https://github.com/Cv-jsSBzZ-U825F-ViuMPA-xo
+https://github.com/Reapvitalized,
+including all updates, modifications, and enhancements of the script.
+* "Licensee" means the individual or entity using the Software.
+
+**2. GRANT OF LICENSE**
+
+Licensor grants to Licensee a non-exclusive, non-transferable license to use the Software solely for personal, commercial, etc..
+The license can be modified at any time.
+
+**3. RESTRICTIONS**
+
+* Licensee shall not modify, reverse engineer, or disassemble the script.
+* Licensee shall not distribute, sublicense, or assign the script to any third party.
+* Licensee shall not use the script for any purpose other than as specified in Section 2.
+
+**4. OWNERSHIP**
+
+The script and all intellectual property rights thereto are and shall remain the exclusive property of Licensor.
+
+**5. TERM AND TERMINATION**
+
+This Agreement shall commence on the Effective Date and shall continue until terminated by Licensor. Licensor may terminate this Agreement at any time, without notice, if Licensee breaches any term or condition of this Agreement.
+
+**6. WARRANTY DISCLAIMER**
+
+The script is provided "as is" without warranty of any kind, express or implied.
+
+**7. LIMITATION OF LIABILITY**
+
+In no event shall Licensor be liable for any damages, including but not limited to incidental, consequential, or punitive damages, arising out of the use of the script.
+
+**8. ENTIRE AGREEMENT**
+
+This Agreement constitutes the entire agreement between the parties and supersedes all prior or contemporaneous agreements or understandings.
+
+By using this script, Licensee acknowledges that it has read, understands, and agrees to be bound by the terms and conditions of this Agreement.
+
 ]]
 local s = Instance.new('Sound')
 s.Parent = game.CoreGui
