@@ -1,102 +1,27 @@
+local notif = loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMinisterq/Notification-Library/Main/Library.lua"))()
 
 game.Players.LocalPlayer:SetAttribute('S_UltMusic', false)
 local menutxt = 'V - FUCK IT, WE BALL!'
 getgenv().FailSafe = true
 getgenv().DownloadAudio = true
 
-function info(txt,dly)
-if dly == nil then dly = 2 end
-spawn(function() 
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local Credits = Instance.new("TextLabel")
-pcall(function() game.CoreGui.Revit:Destroy() end)
-task.wait(.1)
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-ScreenGui.IgnoreGuiInset = true
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Name = 'Revit'
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.BorderColor3 = Color3.fromRGB(255, 0, 0)
-
-
-spawn(function()
-Credits.Parent = ScreenGui
-Credits.Font=Enum.Font.Arcade
-Credits.TextColor3=Color3.new(1,1,1)
-Credits.Position = UDim2.new(0,0,0,0)
-Credits.TextSize = 35
-Credits.Size = UDim2.new(1,0,.1,0)
-Credits.Text = ''
-Credits.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Credits.BorderColor3 = Color3.fromRGB(255, 0, 0)
-end)
-function tw(var,s)
-local a = ""
-local s_l = #s
-for i = 1, s_l do
-local c = string.sub(s, i, i)
-a = a .. c
-var.Text = a
-if c == "." then
-task.wait(.6)
-elseif c == ";" then
-task.wait(.3)
-elseif c == "," then
-task.wait(.3)
-elseif c == "!" then
-task.wait(.3)
+function info(t_ype, txt,dly)
+notif:SendNotification(t_ype, txt, dly)
 end
-task.wait(.03)
-end
-end
-tw(Credits,txt)
-task.wait(dly)
-ScreenGui:Destroy()
-end)
-end
-
---AUDIO FUNCTION
-function GetAudio(audioname)
+--FILE FUNCTION
+makefolder('TSB')
+function GetFile(filename,filetype)
 local result
 local success, response = pcall(function()
-result = readfile(audioname..".mp3")
+result = readfile('TSB/'..filename..filetype)
 end)
 if success then
 
 else
-info('Downloading '..audioname..'.mp3')
-local filep = game:HttpGet('https://github.com/Reapvitalized/SG_ASSETS/raw/refs/heads/main/'..audioname..'.mp3')
-writefile(audioname..".mp3",filep)
-end
-end
-function Getrbxm(rbxm)
-local result
-local success, response = pcall(function()
-result = readfile(rbxm..".rbxm")
-end)
-if success then
-
-else
-info('Downloading '..rbxm..'.rbxm')
-local filep = game:HttpGet('https://github.com/Reapvitalized/SG_ASSETS/raw/refs/heads/main/'..rbxm..'.rbxm')
-writefile(rbxm..".rbxm",filep)
-end
-end
-function Getpng(png)
-local result
-local success, response = pcall(function()
-result = readfile(png..".png")
-end)
-if success then
-
-else
-info('Downloading '..png..'.png')
-local filep = game:HttpGet('https://github.com/Reapvitalized/SG_ASSETS/raw/refs/heads/main/'..png..'.png')
-writefile(png..".png",filep)
+info('Info','Downloading '..filename..filetype,7)
+local filep = game:HttpGet('https://github.com/Reapvitalized/SG_ASSETS/raw/refs/heads/main/'..filename..filetype)
+writefile('TSB/'..filename..filetype,filep)
+info('Success','Downloaded!', 3)
 end
 end
 
@@ -106,13 +31,13 @@ local tabpng = {'subclass','Rainbow'}
 if getgenv().DownloadAudio == true then
 
 for i = 1,#tabrbxm do 
-Getrbxm(tabrbxm[i]) end
+GetFile(tabrbxm[i],'.rbxm') end
 
 for i = 1,#tabpng do 
-Getpng(tabpng[i]) end
+GetFile(tabpng[i],'.png') end
 
 for i = 1,#tabaudio do 
-GetAudio(tabaudio[i])
+GetFile(tabaudio[i],'.mp3')
 end end
 local parts = game.CoreGui.HeadsetDisconnectedDialog:GetDescendants()
 for i, part in ipairs(parts) do
