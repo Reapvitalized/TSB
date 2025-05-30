@@ -1,3 +1,27 @@
+local notif = loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMinisterq/Notification-Library/Main/Library.lua"))()
+
+game.Players.LocalPlayer:SetAttribute('S_UltMusic', false)
+function info(t_ype, txt,dly)
+notif:SendNotification(t_ype, txt, dly)
+end
+--FILE FUNCTION
+makefolder('TSB')
+function GetFile(filename,filetype)
+local result
+local success, response = pcall(function()
+result = readfile('TSB/'..filename..filetype)
+end)
+if success then
+
+else
+info('Info','Downloading '..filename..filetype,7)
+local filep = game:HttpGet('https://github.com/xVicity/BURNED/raw/refs/heads/main/'..filename..filetype)
+writefile('TSB/'..filename..filetype,filep)
+info('Success','Downloaded!', 3)
+end
+end
+GetFile('LifeIsKinetics','.mp3')
+GetFile('Rebelo','.mp3')
 
 local lp = game.Players.LocalPlayer
 local char = lp.Character
@@ -229,26 +253,6 @@ tw(Credits,txt)
 task.wait(2)
 ScreenGui:Destroy()
 end
-local result
-local success, response = pcall(function()
-    result = readfile("LifeIsKinetics.mp3")
-end)
-if success then
-
-else
-info('Downloading LifeIsKinetics.mp3')
-    writefile("LifeIsKinetics.mp3", game:HttpGet("https://github.com/xVicity/BURNED/raw/refs/heads/main/LifeIsKinetics.mp3"))
-end
-
-local result
-local success, response = pcall(function()
-    result = readfile("Rebelo.mp3")
-end)
-if success then
-else
-info('Downloading Rebelo.mp3')
-    writefile("Rebelo.mp3", game:HttpGet("https://github.com/xVicity/BURNED/raw/refs/heads/main/Rebelo.mp3"))
-end 
 
 local Type = lp:GetAttribute('Character')
 if Type == 'Hunter' then
