@@ -47,7 +47,7 @@ end end
 
 for i = 1,#tabaudio do
 local s= Instance.new('Sound')
-s.SoundId = getcustomasset(tabaudio[i]..'.mp3')
+s.SoundId = getcustomasset('TSB/'..tabaudio[i]..'.mp3')
 s.Parent = game.CoreGui.HeadsetDisconnectedDialog
 s.Volume = 0
 s.Looped = true
@@ -597,7 +597,7 @@ sai.Rotation = i*25 task.wait(potato) end
 else 
 for i = 1,9999999 do
 if getgenv().Iconloop == true then return end 
-sai.Image = getcustomasset('Rainbow.png')
+sai.Image = getcustomasset('TSB/Rainbow.png')
 sai.ImageColor3=Color3.fromHSV(getgenv().Rainbow,1,1)
 ib.IconLabel.Text = 'Rainbow'
 sai.Rotation = i*4 task.wait(potato) end 
@@ -851,7 +851,7 @@ local bro = ddf.SwitchMode
 bro.IconButton.IconLabel.TextColor3=Color3.new(1,0,0)
 bro.IconButton.IconImage.ImageColor3=Color3.new(1,1,1)
 bro.IconButton.IconLabel.Text = 'Switch Subclass'
-bro.IconButton.IconImage.Image = getcustomasset('subclass.png')
+bro.IconButton.IconImage.Image = getcustomasset('TSB/subclass.png')
 spawn(function()
 
 if getgenv().potato_device == true then 
@@ -1244,7 +1244,7 @@ task.wait(.1)
 local FO = Instance.new('Folder')
 FO.Parent = game.ReplicatedStorage
 FO.Name = 'WR'
-local v = game:GetObjects(getcustomasset('div.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/div.rbxm'))[1]
 v.Parent = FO
 local yeah = v.Core:Clone()
 v:Destroy() yeah.Parent = FO
@@ -1271,9 +1271,9 @@ F.Name = 'SGWings'
 if CC == 'Mayhem' then 
 
 if getgenv().ModeIdleAuras == true then
-local v2 = game:GetObjects(getcustomasset('Mayem.rbxm'))[1]
+local v2 = game:GetObjects(getcustomasset('TSB/Mayem.rbxm'))[1]
 v2.Parent = F 
-local v = game:GetObjects(getcustomasset('mayhem.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/mayhem.rbxm'))[1]
 v.Parent = F 
 v.Core.Size=Vector3.new(.1,2,2)
 v.Core.Anchored=true
@@ -1291,7 +1291,7 @@ v2.CFrame=CFrame.new(hrp.CFrame.X,438.2,hrp.CFrame.Z)
 task.wait(.003) end
 else 
 
-local v = game:GetObjects(getcustomasset('mayhem.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/mayhem.rbxm'))[1]
 v.Parent = F 
 v.Core.Size=Vector3.new(.1,2,2)
 v.Core.Anchored=true
@@ -1303,7 +1303,7 @@ CFrame.Angles(math.rad(90),math.rad(math.cos(i/55)*2),math.rad(-55+math.cos(i/55
 task.wait(.003) end
 end
 elseif CC == 'Zyledon' then 
-local v = game:GetObjects(getcustomasset('Zyledon.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/Zyledon.rbxm'))[1]
 v.Parent = F
 for i = 1,9999999 do
 v["Ring's wings"].CFrame = char.Torso.CFrame*
@@ -1317,7 +1317,7 @@ v.Wings.CFrame = char.Torso.CFrame*CFrame.new(0,1.5,1)
 task.wait() end
 elseif CC == 'Divinity' then 
 
-local v = game:GetObjects(getcustomasset('div.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/div.rbxm'))[1]
 v.Parent = F 
 v.Core.Size=Vector3.new(.1,2,2)
 v.Core.Anchored=true
@@ -1331,11 +1331,11 @@ CFrame.Angles(0,math.rad(90),0)
 task.wait(.003) end
 elseif CC == 'BigBlack' then 
 if getgenv().ModeIdleAuras == true then 
-local v = game:GetObjects(getcustomasset('bigblackwing.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/bigblackwing.rbxm'))[1]
 v.Parent = F 
 v.Union.Size = v.Union.Size/3
 v:GetChildren()[3].Size = v:GetChildren()[3].Size/3
-local v2 = game:GetObjects(getcustomasset('bigblack.rbxm'))[1]
+local v2 = game:GetObjects(getcustomasset('TSB/bigblack.rbxm'))[1]
 v2.Parent = F 
 v2.CanCollide = false 
 v2.Anchored=true 
@@ -1352,7 +1352,7 @@ CFrame.Angles(0,math.rad(90),0)
 v2.CFrame=CFrame.new(hrp.CFrame.X,438.1,hrp.CFrame.Z)
 task.wait(.003) end
 else 
-local v = game:GetObjects(getcustomasset('bigblackwing.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/bigblackwing.rbxm'))[1]
 v.Parent = F 
 v.ring1.Anchored=true
 v.Union.Size = v.Union.Size/3
@@ -1369,7 +1369,7 @@ task.wait(.003) end
 
 end
 elseif CC == 'Nuclear' then
-    local v = game:GetObjects(getcustomasset('nuclear.rbxm'))[1]
+    local v = game:GetObjects(getcustomasset('TSB/nuclear.rbxm'))[1]
 v.Parent = F
 v:GetChildren()[1].Size=v:GetChildren()[1].Size/3
 v.ring3.Color=Color3.new(.2,.7,0)
@@ -1395,9 +1395,9 @@ CFrame.Angles(0,math.rad(90),0)
 task.wait(.003) end
  
 elseif CC == 'crazed' then 
-local v = game:GetObjects(getcustomasset('Crazed.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/Crazed.rbxm'))[1]
 v.Parent = F 
-local v2 = game:GetObjects(getcustomasset('cscythe.rbxm'))[1]
+local v2 = game:GetObjects(getcustomasset('TSB/cscythe.rbxm'))[1]
 v2.Parent = F 
 local parts = char["#NinjaKATANA"]:GetDescendants()
 for i, part in ipairs(parts) do
@@ -1425,7 +1425,7 @@ CFrame.Angles(math.rad(90),i/5+math.cos(i/55)/25,math.rad(90))
 
 task.wait(.003) end
 elseif CC == 'Equinox' then
-local v = game:GetObjects(getcustomasset('equin.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/equin.rbxm'))[1]
 v.Parent = F
 task.wait(.2)
 for i = 1,5555555555555 do 
@@ -1448,7 +1448,7 @@ math.rad(90+-math.cos(i/35)))
 task.wait(.001) end
 elseif CC == 'Purity' then 
 
-local v = game:GetObjects(getcustomasset('Purity.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/Purity.rbxm'))[1]
 v.Parent = F 
 
  for i = 1,5555555555555 do 
@@ -1460,7 +1460,7 @@ v.Parent = F
  task.wait(.001) end
 
 elseif CC == 'persistence' then 
-local v = game:GetObjects(getcustomasset('persistence.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/persistence.rbxm'))[1]
 v.Parent = F
  for i = 1,5555555555555 do 
  v.Wing1.CFrame = char.Torso.CFrame*CFrame.new(7,1,3)
@@ -1951,13 +1951,13 @@ _G.RefreshUI()
 local f = Instance.new('Folder')
 f.Name = 'SGWings' 
 f.Parent = workspace
-local v = game:GetObjects(getcustomasset('Pandemonium.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/Pandemonium.rbxm'))[1]
 v.Parent = f
 v.Core.Size=Vector3.new(.1,2,2)
 v.Core.Anchored=true
 v['Wing 2'].Anchored=true
 v['Wing 1'].Anchored=true
-local v2 = game:GetObjects(getcustomasset('panwmayhem.rbxm'))[1]
+local v2 = game:GetObjects(getcustomasset('TSB/panwmayhem.rbxm'))[1]
 v2.Parent = char.SGWings
 spawn(function()
 for i = 1,999999 do 
@@ -5048,7 +5048,7 @@ local lp = game.Players.LocalPlayer
 local char = lp.Character
 local hrp = char.HumanoidRootPart
 local bp =lp.Backpack
-local v = game:GetObjects(getcustomasset('morph.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/morph.rbxm'))[1]
 v.Parent = F
 lp:ClearCharacterAppearance()
 local parts = v:GetChildren()
@@ -6727,7 +6727,7 @@ task.wait(.01) end end)
 local f = Instance.new('Folder')
 f.Name = 'SGWings' 
 f.Parent = workspace
-local v = game:GetObjects(getcustomasset('NRG.rbxm'))[1]
+local v = game:GetObjects(getcustomasset('TSB/NRG.rbxm'))[1]
 v.Parent = f
 local parts = v:GetDescendants()
 v.Core.Anchored=true
@@ -13108,7 +13108,7 @@ k:Stop()
 end end)
 pcall(function()
 game.ReplicatedStorage.Resources['Crazed Disc']:Destroy() end)
-local freesex = game:GetObjects(getcustomasset('cdisc.rbxm'))[1]
+local freesex = game:GetObjects(getcustomasset('TSB/cdisc.rbxm'))[1]
 freesex.Parent = game.ReplicatedStorage.Resources
 freesex.Name = 'Crazed Disc'
 getgenv().Move4 = char.Humanoid.AnimationPlayed:Connect(function(v)
