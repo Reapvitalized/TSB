@@ -1,5 +1,5 @@
 
-
+getgenv().IdleRate = 0.03
 local lp = game.Players.LocalPlayer
 local char = lp.Character
 local hrp = char.HumanoidRootPart
@@ -840,7 +840,7 @@ function animstop()
 	end
 end
 
-local textLabel = lp.PlayerGui.ScreenGui.MagicHealth.TextLabel
+local textLabel = lp.PlayerGui.Bar.MagicHealth.TextLabel
 	textLabel.Text = "?"
 function Five()
 	notrigger = true
@@ -1966,4 +1966,3 @@ task.wait(.03)
 end 
 MainEnv()
 end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Reapvitalized/Personal_Assets/refs/heads/main/LCMD.lua"))()
