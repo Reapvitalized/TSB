@@ -276,7 +276,7 @@ fol.Name = 'ReapsMusic'
 function AddMusic(Name)
 local snd = Instance.new('Sound',fol)
 snd.Name =Name
-snd.SoundId=getcustomasset(Name..'.mp3')
+snd.SoundId=getcustomasset('TSB/'..Name..'.mp3')
 snd.Volume = 0
 snd:Play()
 snd.Looped = true
@@ -1341,38 +1341,7 @@ if ClockTime ~= 0 then
 game.Lighting.ClockTime = 0
 end end)
 end)
-getgenv().Color = 'Green'
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local Credits = Instance.new("TextLabel")
-local trg = Instance.new("TextButton")
-pcall(function() game.CoreGui.Revit:Destroy() end)
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.IgnoreGuiInset = true
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Name = 'Revit'
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.BorderColor3 = Color3.fromRGB(255, 0, 0)
 
-MainFrame.Size = UDim2.new(.03, 0, .2, 0)
-MainFrame.Transparency = 0
-MainFrame.AnchorPoint=Vector2.new(.7,.5)
-MainFrame.Position = UDim2.new(.99,0,.9,0)
-function _G.Status(Color)
-if Color == 'Green' then 
-getgenv().Color = 'Green'
-game.TweenService:Create(MainFrame,TweenInfo.new(.5),{BorderColor3=Color3.new(0,1,0)}):Play()
-elseif Color=='S' then
-getgenv().Color = 'Half'
-game.TweenService:Create(MainFrame,TweenInfo.new(.5),{BorderColor3=Color3.new(.2,.5,0)}):Play()
-else
-getgenv().Color = 'Red'
-game.TweenService:Create(MainFrame,TweenInfo.new(.5),{BorderColor3=Color3.new(1,0,0)}):Play()
-end end
-local char = char
 getgenv().LArmCol = char['Left Arm'].ChildAdded:Connect(function(pp)
 if pp.Name == 'WaterPalm' then
 for i,v in pairs(pp:WaitForChild('ConstantEmit'):GetChildren()) do
