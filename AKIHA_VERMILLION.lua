@@ -139,6 +139,7 @@ end)
 function MainEnv()
 local lp = game.Players.LocalPlayer
 local char = lp.Character
+char.Humanoid.CameraOffset = Vector3.new(0,0,0)
 local hrp = char.HumanoidRootPart
 local bp =lp.Backpack 
 function randomstring()
@@ -170,7 +171,7 @@ getgenv().connections = getgenv().connections or {}
 local function AddSignal(connection, name)
 local str = randomstring()
 warn('CONNECTION ADDED! '..name..'\nUNIQUE CONNECTION ID: '..str)
-notif:SendNotification("Warning", 'CONNECTION ADDED! \n ~ '..'"'..name..'"', .3)
+
 if getgenv().connections then
 getgenv().connections[name..str or #getgenv().connections + 1] = connection
 return connection
@@ -979,46 +980,22 @@ char.Humanoid.JumpPower = 25
 end
 
  end),'Jump Power Modifier')
+  local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://121032789756540"
+local k = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+
 AddSignal(game:GetService("UserInputService").JumpRequest:Connect(function() 
 _G.Jumping = true 
 if db == true then return end
 db = true 
- local Anim = Instance.new("Animation")
-Anim.AnimationId = "rbxassetid://121032789756540"
-local k = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
 spawn(function()
-v2 = Instance.new('BodyGyro',char.HumanoidRootPart) 
-game.Debris:AddItem(v2,8)
-v2.Name = 'Client' 
-v2.MaxTorque = Vector3.new(1,1,1)*10^1555
-v2.D = 4500
-v2.P = 15500
 
-char.Humanoid:ChangeState(Enum.HumanoidStateType.Flying)
-v2.CFrame = char.HumanoidRootPart.CFrame*CFrame.Angles(
-	math.rad(-45),math.rad(0),math.rad(0))
 	local pcf = char.HumanoidRootPart.CFrame
-char.Humanoid.AutoRotate = false 
-local e = 
-char.Humanoid:GetPropertyChangedSignal('AutoRotate'):Connect(function(pp)
-if char.Humanoid.AutoRotate == true then 
-char.Humanoid.AutoRotate = false 
-end
-end)
 
 k:Play(.3)
 k.Priority = Enum.AnimationPriority.Action
 k:AdjustSpeed(1) k.TimePosition = 5
 
-for i = 1,1177 do 
-if v2.Parent ~= char.HumanoidRootPart then 
-e:Disconnect()
-char.Humanoid.AutoRotate = true
-break end
-v2.D = 1500-math.sin(i/7)*1500
-
-
-task.wait(.01) end
 
 end)
 task.delay(.2,function() db = false 
@@ -1027,7 +1004,7 @@ local an = 0
 
 k:AdjustSpeed(.2) task.delay(2,function() k:AdjustSpeed(0) end)
 repeat task.wait() until char.Humanoid.FloorMaterial ~= Enum.Material.Air 
-v2:Destroy() 
+
 _G.Jumping = false
 k:Stop()
 
@@ -1574,12 +1551,12 @@ end
 end),"Ult Start Tap")
 _G.Enabled = false
 local uis = game:GetService("UserInputService")
-local basemini = lp.PlayerGui.Hotbar.Backpack.Hotbar["4"]
-local base = lp.PlayerGui.Hotbar.Backpack.Hotbar["4"].Base
+local basemini = lp.PlayerGui.Hotbar.Backpack.Hotbar["5"]
+local base = lp.PlayerGui.Hotbar.Backpack.Hotbar["5"].Base
 basemini.Visible = true
 base.Reuse.Visible = false
 getgenv().Cooldown4 = .2
-function Four()
+function Five()
 pcall(function() _G.yse:Disconnect() end)
 if _G.Enabled == false then 
 _G.Enabled = true
@@ -1594,13 +1571,13 @@ base.ToolName.Text = "Lock"
 end
 _G.yse = game:GetService("RunService").Heartbeat:Connect(function(step)
 if _G.EN ~= nil then 
-if _G.EN ~= char then 
+print('we run')
 hrp.CFrame = CFrame.lookAt(hrp.Position, 
 Vector3.new(_G.EN.HumanoidRootPart.Position.X,hrp.Position.Y,_G.EN.HumanoidRootPart.Position.Z))
 game:GetService("RunService").RenderStepped:Wait()
 hrp.CFrame = CFrame.lookAt(hrp.Position, 
 Vector3.new(_G.EN.HumanoidRootPart.Position.X,hrp.Position.Y,_G.EN.HumanoidRootPart.Position.Z))
-end end
+end
 end) 
 spawn(function()
 repeat wait() until char.Humanoid.Health == 0 or _G.Enabled == false 
@@ -1612,8 +1589,8 @@ AddSignal(
 uis.InputBegan:Connect(function(inputs, event)
 
 if event == true then return end
-if inputs.KeyCode == Enum.KeyCode.Four and not base:FindFirstChild("Cooldown") then
-spawn(function() 		Four() end)
+if inputs.KeyCode == Enum.KeyCode.Five and not base:FindFirstChild("Cooldown") then
+spawn(function() 		Five() end)
 local deez = cdcc:Clone()
 deez.Parent = base
 game:GetService("TweenService"):Create(deez, 
@@ -1625,7 +1602,7 @@ end end),"Move4 Bind")
 AddSignal( 
 base.MouseButton1Click:Connect(function()
 if not base:FindFirstChild("Cooldown") then
-spawn(function() 		Four() end)
+spawn(function() 		Five() end)
 local deez = cdcc:Clone()
 deez.Parent = base
 game:GetService("TweenService"):Create(deez, 
@@ -1651,7 +1628,7 @@ add = 1
 task.delay(4,function() add = 0 end)
 _G.yas = game:GetService("RunService").Heartbeat:Connect(function(step)
 local old = hrp.CFrame
-hrp.CFrame = old*CFrame.new(0,0,-.5)*CFrame.Angles(0,math.rad(180),0)
+hrp.CFrame = old*CFrame.new(0,0,.5)*CFrame.Angles(0,math.rad(180),0)
 game:GetService("RunService").RenderStepped:Wait()
 hrp.CFrame = old
 
@@ -1671,7 +1648,7 @@ add = 1
 task.delay(4,function() add = 0 end)
 _G.yas = game:GetService("RunService").Heartbeat:Connect(function(step)
 local old = hrp.CFrame
-hrp.CFrame = old*CFrame.new(0,0,-.5)*CFrame.Angles(0,math.rad(-90),0)
+hrp.CFrame = old*CFrame.new(0,0,.5)*CFrame.Angles(0,math.rad(-90),0)
 game:GetService("RunService").RenderStepped:Wait()
 hrp.CFrame = old
 
@@ -1708,28 +1685,3 @@ notif:SendNotification("Info", 'Signal Script by i.am.an.agent on Discord', 3)
 task.wait(3)
 notif:SendNotification("Info", 'Character "Akiha Vermillion" from "Tsukihime"', 
 16)
---[[
-TODO: 
-✅ make AIR LMB that work (impossible) (i did it somehow)
-❌ find morph (yeah ok)
-✅ add blood heat (idk how to detect it rn) (i figured ito ut)
-✅ fix tatsumaki 4th ult move anim fucking your rot and pos
-✅ do 1st move
-✅ do 2nd move
-✅ do 3rd move
-✅ do 4th move
-✅ figure out how the fuck to make that weird screen distort effect
-
-STATUS: 8/9 COMPLETED
-(press ctrl + num to modify)
-]]
-
-pcall(function()
-getgenv().pepe:Disconnect()
-end)
-getgenv().pepe = game.Players.LocalPlayer.CharacterAdded:Connect(function(c)
-task.wait(1.5)
-
-MainEnv()
-
-end)
